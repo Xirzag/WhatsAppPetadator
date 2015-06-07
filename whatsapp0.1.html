@@ -1,0 +1,373 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>WhatsApp Letters</title>
+</head>
+<body>
+
+<input id="texto" type="text"/>
+<input value="click" type="button" onclick="create()" />
+<br />
+<div id="writer"></div>
+
+<!--&#9723;<br />
+&#11035;<br />-->
+
+<script>
+var letra = new Array();
+
+var a = new Array(5);
+letra["a"] = a;
+a[0] = [0,1,1,0];
+a[1] = [1,0,0,1];
+a[2] = [1,1,1,1];
+a[3] = [1,0,0,1];
+a[4] = [1,0,0,1];
+
+var b = new Array(5);
+letra["b"] = b;
+b[0] = [1,1,1,0];
+b[1] = [1,0,0,1];
+b[2] = [1,1,1,0];
+b[3] = [1,0,0,1];
+b[4] = [1,1,1,0];
+
+var c = new Array(5);
+letra["c"] = c;
+c[0] = [0,1,1,0];
+c[1] = [1,0,0,1];
+c[2] = [1,0,0,0];
+c[3] = [1,0,0,1];
+c[4] = [0,1,1,0];
+
+var d = new Array(5);
+letra["d"] = d;
+d[0] = [1,1,1,0];
+d[1] = [1,0,0,1];
+d[2] = [1,0,0,1];
+d[3] = [1,0,0,1];
+d[4] = [1,1,1,0];
+
+var e = new Array(5);
+letra["e"] = e;
+e[0] = [1,1,1,1];
+e[1] = [1,0,0,0];
+e[2] = [1,1,1,0];
+e[3] = [1,0,0,0];
+e[4] = [1,1,1,1];
+
+
+var f = new Array(5);
+letra["f"] = f;
+f[0] = [1,1,1,1];
+f[1] = [1,0,0,0];
+f[2] = [1,1,1,0];
+f[3] = [1,0,0,0];
+f[4] = [1,0,0,0];
+
+var g = new Array(5);
+letra["g"] = g;
+g[0] = [0,1,1,0];
+g[1] = [1,0,0,0];
+g[2] = [1,0,1,1];
+g[3] = [1,0,0,1];
+g[4] = [0,1,1,0];
+
+var h = new Array(5);
+letra["h"] = h;
+h[0] = [1,0,0,1];
+h[1] = [1,0,0,1];
+h[2] = [1,1,1,1];
+h[3] = [1,0,0,1];
+h[4] = [1,0,0,1];
+
+var i = new Array(5);
+letra["i"] = i;
+i[0] = [0,1,0,0];
+i[1] = [0,0,0,0];
+i[2] = [0,1,0,0];
+i[3] = [0,1,0,0];
+i[4] = [0,1,0,0];
+
+var j = new Array(5);
+letra["j"] = j;
+j[0] = [0,0,1,0];
+j[1] = [0,0,0,0];
+j[2] = [0,0,1,0];
+j[3] = [0,0,1,0];
+j[4] = [0,1,0,0];
+
+var k = new Array(5);
+letra["k"] = k;
+k[0] = [1,0,0,1];
+k[1] = [1,0,1,0];
+k[2] = [1,1,0,0];
+k[3] = [1,0,1,0];
+k[4] = [1,0,0,1];
+
+var l = new Array(5);
+letra["l"] = l;
+l[0] = [1,0,0,0];
+l[1] = [1,0,0,0];
+l[2] = [1,0,0,0];
+l[3] = [1,0,0,0];
+l[4] = [1,1,1,0];
+
+var m = new Array(5);
+letra["m"] = m;
+m[0] = [1,0,0,1];
+m[1] = [1,1,1,1];
+m[2] = [1,0,0,1];
+m[3] = [1,0,0,1];
+m[4] = [1,0,0,1];
+
+var n = new Array(5);
+letra["n"] = n;
+n[0] = [1,0,0,1];
+n[1] = [1,1,0,1];
+n[2] = [1,1,1,1];
+n[3] = [1,0,1,1];
+n[4] = [1,0,0,1];
+
+var ñ = new Array(5);
+letra["ñ"] = ñ;
+ñ[0] = [0,1,1,0];
+ñ[1] = [0,0,0,0];
+ñ[2] = [1,0,0,1];
+ñ[3] = [1,1,0,1];
+ñ[4] = [1,0,1,1];
+
+var o = new Array(5);
+letra["o"] = o;
+o[0] = [0,1,1,0];
+o[1] = [1,0,0,1];
+o[2] = [1,0,0,1];
+o[3] = [1,0,0,1];
+o[4] = [0,1,1,0];
+
+var p = new Array(5);
+letra["p"] = p;
+p[0] = [1,1,1,0];
+p[1] = [1,0,0,1];
+p[2] = [1,1,1,0];
+p[3] = [1,0,0,0];
+p[4] = [1,0,0,0];
+
+var q = new Array(5);
+letra["q"] = q;
+q[0] = [0,0,1,0];
+q[1] = [0,1,0,1];
+q[2] = [1,0,0,1];
+q[3] = [1,0,1,0];
+q[4] = [0,1,0,1];
+
+var r = new Array(5);
+letra["r"] = r;
+r[0] = [1,1,1,0];
+r[1] = [1,0,0,1];
+r[2] = [1,1,1,0];
+r[3] = [1,0,1,0];
+r[4] = [1,0,0,1];
+
+var s = new Array(5);
+letra["s"] = s;
+s[0] = [0,1,1,0];
+s[1] = [1,0,0,0];
+s[2] = [0,1,1,0];
+s[3] = [0,0,0,1];
+s[4] = [0,1,1,0];
+
+var t = new Array(5);
+letra["t"] = t;
+t[0] = [1,1,1,1];
+t[1] = [0,0,1,0];
+t[2] = [0,0,1,0];
+t[3] = [0,0,1,0];
+t[4] = [0,0,1,0];
+
+var u = new Array(5);
+letra["u"] = u;
+u[0] = [1,0,0,1];
+u[1] = [1,0,0,1];
+u[2] = [1,0,0,1];
+u[3] = [1,0,0,1];
+u[4] = [1,1,1,1];
+
+var v = new Array(5);
+letra["v"] = v;
+v[0] = [1,0,0,1];
+v[1] = [1,0,0,1];
+v[2] = [1,0,0,1];
+v[3] = [1,0,0,1]
+v[4] = [0,1,1,0];
+
+var w = new Array(5);
+letra["w"] = w;
+w[0] = [1,0,0,1];
+w[1] = [1,0,0,1];
+w[2] = [1,0,0,1];
+w[3] = [1,1,1,1]
+w[4] = [1,0,0,1];
+
+
+var x = new Array(5);
+letra["x"] = x;
+x[0] = [1,0,0,1];
+x[1] = [1,0,0,1];
+x[2] = [0,1,1,0];
+x[3] = [1,0,0,1];
+x[4] = [1,0,0,1];
+
+var y = new Array(5);
+letra["y"] = y;
+y[0] = [1,0,0,1];
+y[1] = [1,0,0,1];
+y[2] = [0,1,1,0];
+y[3] = [0,1,0,0];
+y[4] = [1,0,0,0];
+
+var z = new Array(5);
+letra["z"] = z;
+z[0] = [1,1,1,1];
+z[1] = [0,0,1,1];
+z[2] = [0,1,1,0];
+z[3] = [1,1,0,0];
+z[4] = [1,1,1,1];
+
+var cero = new Array(5);
+letra["0"] = cero;
+cero[0] = [1,1,1,1];
+cero[1] = [1,0,0,1];
+cero[2] = [1,0,0,1];
+cero[3] = [1,0,0,1];
+cero[4] = [1,1,1,1];
+
+var uno = new Array(5);
+letra["1"] = uno;
+uno[0] = [0,0,1,0];
+uno[1] = [0,1,1,0];
+uno[2] = [0,0,1,0];
+uno[3] = [0,0,1,0];
+uno[4] = [0,0,1,0];
+
+var dos = new Array(5);
+letra["2"] = dos;
+dos[0] = [0,1,1,0];
+dos[1] = [1,0,0,1];
+dos[2] = [0,0,1,0];
+dos[3] = [0,1,1,0];
+dos[4] = [1,1,1,1];
+
+var tres = new Array(5);
+letra["3"] = tres;
+tres[0] = [0,1,1,0];
+tres[1] = [1,0,0,1];
+tres[2] = [0,0,1,0];
+tres[3] = [1,0,0,1];
+tres[4] = [0,1,1,0];
+
+var cuatro = new Array(5);
+letra["4"] = cuatro;
+cuatro[0] = [0,0,0,1];
+cuatro[1] = [0,0,1,1];
+cuatro[2] = [0,1,0,1];
+cuatro[3] = [1,1,1,1];
+cuatro[4] = [0,0,0,1];
+
+var cinco = new Array(5);
+letra["5"] = cinco;
+cinco[0] = [1,1,1,1];
+cinco[1] = [1,0,0,0];
+cinco[2] = [0,1,1,0];
+cinco[3] = [0,0,0,1];
+cinco[4] = [0,1,1,0];
+
+var seis = new Array(5);
+letra["6"] = seis;
+seis[0] = [0,1,1,1];
+seis[1] = [1,0,0,0];
+seis[2] = [1,1,1,0];
+seis[3] = [1,0,0,1];
+seis[4] = [0,1,1,0];
+
+var siete = new Array(5);
+letra["7"] = siete;
+siete[0] = [1,1,1,1];
+siete[1] = [0,0,0,1];
+siete[2] = [0,0,1,0];
+siete[3] = [0,0,1,0];
+siete[4] = [0,0,1,0];
+
+var ocho = new Array(5);
+letra["8"] = ocho;
+ocho[0] = [0,1,1,0];
+ocho[1] = [1,0,0,1];
+ocho[2] = [0,1,1,0];
+ocho[3] = [1,0,0,1];
+ocho[4] = [0,1,1,0];
+
+var nueve = new Array(5);
+letra["9"] = nueve;
+nueve[0] = [0,1,1,0];
+nueve[1] = [1,0,0,1];
+nueve[2] = [1,1,1,0];
+nueve[3] = [1,0,0,0];
+nueve[4] = [0,1,1,0];
+
+var punto = new Array(5);
+letra["."] = punto;
+punto[0] = [0,0,0,0];
+punto[1] = [0,0,0,0];
+punto[2] = [0,0,0,0];
+punto[3] = [0,0,0,0];
+punto[4] = [0,0,1,0];
+
+var espacio = new Array(5);
+letra[" "] = espacio;
+espacio[0] = [0,0,0,0];
+espacio[1] = [0,0,0,0];
+espacio[2] = [0,0,0,0];
+espacio[3] = [0,0,0,0];
+espacio[4] = [0,0,0,0];
+
+//qwertyuiopasdfghjklñzxcvbnm 1234567890.
+
+function create(){
+	var input = document.getElementById("texto").value.toLowerCase(); 
+	
+	var output = "";
+	for(var l = 0; l < input.length; l++){
+		//var char = '';
+		/*switch(input.charAt(l)){
+			case "0":
+				char = "cero";
+				break;
+			case "1":
+				char = "uno";
+				break;
+				
+		}*/
+		try {
+			for(var i = 0; i < 5; i++){
+				for(var j = 0; j < 4; j++){
+					if(letra[input.charAt(l)][i][j]==0){
+						output += "&#9723;";
+					}else{
+						output += "&#11035;";
+					}
+				}
+				output += "<br/>";
+			}
+		}catch(err) {
+    		alert("Caracter no indexado");
+			output += "ERROR<br/>";
+		}
+		output += "<br/>";
+	}
+	document.getElementById("writer").innerHTML = output;
+}
+</script>
+
+</body>
+</html>

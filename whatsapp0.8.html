@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=320"/>
+<title>WhatsApp Letters</title>
+</head>
+<style>
+body{
+	background-color: #FFC;
+	text-align:center;
+	font-family:Verdana, Geneva, sans-serif;
+}
+#todo{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+}
+#titulo{
+	padding-top:6px;
+	padding-bottom:6px;
+	background-color: #333;
+	color: #FFF;
+	top:0px;
+	left:0px;
+	width:100%;
+	font-size:24px;
+	box-shadow: inset 0 0 20px rgba(0,0,0,0.8);	
+	webkit-box-shadow: inset 0 0 20px rgba(0,0,0,0.8);	
+}
+#writer{
+	position:relative;
+	padding:20px;
+	background-color: #FFF;
+	box-shadow:4px 4px 3px rgba(0,0,0,0.5);
+	webkit-box-shadow:4px 4px 3px rgba(0,0,0,0.5);
+	left:25%;
+	width:50%;
+	min-height:100px;
+}
+#toolBox{
+	padding-top:15px;
+	padding-bottom:20px;;
+	background-color: #EEE;
+	width:100%;
+	font-size:14px;
+	box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+	webkit-box-shadow: inset 0 0 20px rgba(0,0,0,0.3);		
+}
+.emoBoton{
+	transition:all 0.3s ease-in-out;
+	webkit-transition:all 0.3s ease-in-out;	
+}
+.emoBoton:hover{
+	transform:scale(1.2,1.2);
+	webkit-transform:scale(1.2,1.2);	
+}
+#emoBox{
+	overflow:scroll;
+	margin: 0 auto;
+    
+	box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+	webkit-box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+	position:relative;
+	text-align:center;
+	max-height:120px;
+	width:230px;	
+}
+
+</style>
+<body>
+<div id="todo">
+<div id="titulo"><img style="transform:translate(0,4px)" src="http://2.bp.blogspot.com/-4jqA3O_0GPY/UzaeMv7ZayI/AAAAAAAAE70/lx6gfCaJRP4/s1600/whatsapp-by-apk_hd.png" width="30px" height="30px" alt="WhatsAss" />WhatsAss Petadator 3.000</div>
+<div id="toolBox">
+<noscript>Activa javascript para poder usar esta aplicación <br/></noscript>
+<input type="text" id="texto" />
+<input value="Crear" type="button" onclick="create()" />&nbsp;&nbsp;&nbsp;Fuente
+<select name="fuentes" id="fuentes"></select><br/>
+<input value="Texto" type="button" onclick="emoji('text')" />
+<input value="Código" type="button" onclick="emoji('code')" />
+<input value="Emoticonos" type="button" onclick="emoji('emo')" /><br/>
+<div id="emoSel">
+</div>
+</div>
+<br />
+
+<br />
+<div id="writer"></div>
+
+<!--&#9723;<br />  U+2B1C
+&#11035;<br />-->
+<script src="fonts_and_icons.js"></script>
+<script>
+
+var emoForm = 0;
+function emojiMenu(emoForm){
+	var emoBox = ""
+	emoBox = "<table border='0'>";
+	var cRow = 0;
+	for(var ix = 0; ix < emoList[emoForm].length; ix++){
+		if(cRow == 7){
+			emoBox += "</tr><tr>";
+			cRow = 0;
+		}
+		cRow++;
+		emoBox += "<td><img src='http://apps.timwhitlock.info/static/images/emoji/emoji-apple/"+emoList[emoForm][ix]+".png' \
+width='25px' height='25px' class='emoBoton' onclick='emoSel(\""+emoList[emoForm][ix]+"\")'/></td>";
+	}
+	emoBox += "</table>";
+	document.getElementById("emoBox").innerHTML = emoBox;
+}
+
+var fEmo = true;	
+var fEmo0 = "2b1c";
+var fEmo1 = "2b1b";
+var emoOp = 3;
+function emoFEmo(noHueco){
+	if(noHueco){
+		document.getElementById("Emo1").style.border = "thin solid #0FF";
+		document.getElementById("Emo0").style.border = "none";
+		fEmo = true;	
+	}else{
+		document.getElementById("Emo0").style.border = "thin solid #0FF";
+		document.getElementById("Emo1").style.border = "none";
+		fEmo = false;
+	}
+}
+function emoSel(code){
+	if(fEmo){
+		document.getElementById("Emo1").src = "http://apps.timwhitlock.info/static/images/emoji/emoji-apple/"+code+".png" 
+		fEmo1=code
+	}else{
+		document.getElementById("Emo0").src = "http://apps.timwhitlock.info/static/images/emoji/emoji-apple/"+code+".png" 
+	 	fEmo0=code;
+	}
+}
+
+function emoji(sel){
+	var emoSel = document.getElementById("emoSel");
+	switch(sel){
+		case "text":
+			emoOp = 1;
+			emoSel.innerHTML = " \
+			Texto para espacio:<input id='f0' type='text'/><br /> \
+			Texto para relleno:<input id='f1' type='text'/><br /> \
+			Puedes copiar los emoticonos desde <a href='http://getemoji.com/'>http://getemoji.com/</a>";	
+			break;
+		case "code":
+			emoOp = 2;
+			emoSel.innerHTML = " \
+			Escriba el código del emoticono:  <br /> \
+			Código para espacio:<input id='f0' size='6' value='9723' type='text'/> \
+			&nbsp;&nbsp;&nbsp;Hex: <input type='checkbox' id='HexOrDec' /><br /> \
+			Código para relleno:<input id='f1' size='6' value='11035' type='text'/><br /> \
+			Puedes encontrar el código aquí: \
+			<a href='http://apps.timwhitlock.info/emoji/tables/unicode'>timwhitlock.info</a><br />\
+			Copia el campo unicode quitandole el U+ y pincha en hexadecimal";
+			break;
+		case "emo":
+			emoOp = 3;
+			emoSel.innerHTML = "Huecos:<img id='Emo0' \ src='http://apps.timwhitlock.info/static/images/emoji/emoji-apple/2b1c.png' \
+	width='20px' height='20px' onclick='emoFEmo(false)' class='emoBoton'/>  &nbsp;&nbsp;&nbsp;&nbsp; \
+	Rellenos:<img id='Emo1' \ src='http://apps.timwhitlock.info/static/images/emoji/emoji-apple/2b1b.png' \
+	width='20px' height='20px' onclick='emoFEmo(true)' class='emoBoton'/> \
+	<br /> \
+	<img src='http://apps.timwhitlock.info/static/images/emoji/emoji-apple/1f601.png' \
+	width='35px' height='35px' onclick='emojiMenu(0)' class='emoBoton'/> \
+	<img src='http://apps.timwhitlock.info/static/images/emoji/emoji-apple/1f431.png' \
+	width='35px' height='35px' onclick='emojiMenu(1)' class='emoBoton'/> \
+	<img src='http://apps.timwhitlock.info/static/images/emoji/emoji-apple/1f514.png' \
+	width='35px' height='35px' onclick='emojiMenu(2)' class='emoBoton'/> \
+	<img src='http://apps.timwhitlock.info/static/images/emoji/emoji-apple/1f691.png' \
+	width='35px' height='35px' onclick='emojiMenu(3)' class='emoBoton'/> \
+	<img src='http://apps.timwhitlock.info/static/images/emoji/emoji-apple/1f523.png' \
+	width='35px' height='35px' onclick='emojiMenu(4)' class='emoBoton'/> \
+	<div id='emoBox'></div>";
+	emojiMenu(0);
+			break;
+		default:
+			emoOp = -1;
+			emoSel.innerHTML = "Error, la opción no existe";
+	}
+}
+
+emoji('emo');
+
+function pixel(pixel){
+	switch(emoOp){
+		case 1:
+		 	var pText = (pixel)? "f0" : "f1";
+			return document.getElementById(pText).value;
+			break;
+		case 2:
+			var pText = (pixel)? document.getElementById("f0").value 
+			: document.getElementById("f1").value;
+			if(document.getElementById("HexOrDec").checked)pText = parseInt(pText,16);
+			return "&#"+pText;
+			break;
+		case 3:
+			var pText = (pixel)? fEmo1 : fEmo0;
+			pText = parseInt(pText,16);
+			return "&#"+pText;
+			break;
+		default:
+	}
+}
+//qwertyuiopasdfghjklñzxcvbnm 1234567890.
+
+function create(){
+	var input = document.getElementById("texto").value.toLowerCase(); 
+	var inpF = document.getElementById("fuentes").value;
+	var output = "";
+	var pix1 = pixel(true);
+	var pix0 = pixel(false);
+	for(var l = 0; l < input.length; l++){
+		try {
+			for(var i = 0; i < fn[inpF].x; i++){
+				for(var j = 0; j < fn[inpF].y; j++){
+					if(fn[inpF].char[input.charAt(l)][i][j]==0){
+						//output += "&#9723;";
+						output += pix1;
+					}else{
+						//output += "&#11035;";
+						output += pix0;
+					}
+				}
+				output += "<br/>";
+			}
+		}catch(err) {
+    		alert("Caracter no indexado");
+			output += "ERROR<br/>";
+			console.log("¡ERROR "+err);
+		}
+		output += "<br/>";
+	}
+	document.getElementById("writer").innerHTML = output;
+	var selection = window.getSelection();
+	var range = document.createRange();
+	range.selectNodeContents(document.getElementById("writer"));
+	selection.removeAllRanges();
+	selection.addRange(range);
+}
+
+
+</script>
+</div>
+</body>
+</html>

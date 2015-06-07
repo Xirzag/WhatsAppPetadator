@@ -1,0 +1,500 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=320"/>
+<title>WhatsApp Letters</title>
+</head>
+<style>
+input[type=button]{
+	background-color: #F7F7F7;
+	border: thin solid #888;
+	color:  #555;
+	border-radius: 4px;
+	box-shadow: inset -1px -2px 2px 2px rgba(0,0,0,0.2);
+	webkit-box-shadow: inset -1px -2px 2px 2px rgba(0,0,0,0.2);
+	cursor:pointer;	
+}
+
+input[type=text]{
+	background-color: #FFF;
+	border: thin solid #888;
+	color:  #555;
+	border-radius: 4px;
+	box-shadow: inset -1px -0px 3px 3px rgba(0,0,0,0.15);
+	webkit-box-shadow: inset -1px -0px 3px 3px rgba(0,0,0,0.15);
+	cursor:text;
+}
+
+input[type=text]:hover, input[type=text]:focus{
+	background-color: #FFF;
+	border: thin solid #666;
+	color:  #333;
+	box-shadow: inset -1px -0px 3px 3px rgba(0,0,0,0.1);
+	webkit-box-shadow: inset -1px -0px 3px 3px rgba(0,0,0,0.1);
+}
+
+input[type=button]:hover{
+	background-color: #FFF;
+	border: thin solid #666;
+	color:  #333;
+}
+body{
+	background-color: #FFC;
+	text-align:center;
+	font-family:Verdana, Geneva, sans-serif;
+}
+#todo{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+}
+#titulo{
+	padding-top:6px;
+	padding-bottom:6px;
+	background-color: #333;
+	color: #FFF;
+	top:0px;
+	left:0px;
+	width:100%;
+	font-size:20px;
+	box-shadow: inset 0 0 20px rgba(0,0,0,0.8);	
+	webkit-box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+	z-index:15;	
+}
+#writer{
+	position:relative;
+	padding:20px;
+	margin-bottom:20px;
+	background-color: #FFF;
+	box-shadow:4px 4px 3px rgba(0,0,0,0.5);
+	webkit-box-shadow:4px 4px 3px rgba(0,0,0,0.5);
+	left:25%;
+	width:50%;
+	min-height:100px;
+}
+#toolBox{
+	padding-top:15px;
+	padding-bottom:20px;;
+	background-color: #EEE;
+	width:100%;
+	font-size:14px;
+	box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+	webkit-box-shadow: inset 0 0 20px rgba(0,0,0,0.3);		
+}
+.emoBoton{
+	transition:all 0.3s ease-in-out;
+	webkit-transition:all 0.3s ease-in-out;
+	cursor:pointer;		
+}
+.emoBoton:hover{
+	transform:scale(1.2,1.2);
+	webkit-transform:scale(1.2,1.2);	
+}
+#emoBox{
+	overflow:scroll;
+	margin: 0 auto;
+    
+	box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+	webkit-box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+	position:relative;
+	text-align:center;
+	max-height:120px;
+	width:230px;	
+}
+#share{
+	opacity:0.5;
+	position: relative;
+	display:block;
+	left: 0px;
+	width: 35px;
+	height: 35px;
+	/*background-image: url(http://www.icon2s.com/img256/256x256-black-white-android-share.png);*/
+	background-image: url(img/share.png);
+	background-size:35px 35px;
+	background-repeat: no-repeat;
+	background-position: left center;
+	transition:all 0.3s ease-in-out;
+	webkit-transition:all 0.3s ease-in-out;
+	cursor:pointer;		
+}
+#share:hover{
+	opacity:1;
+	transform:scale(1.2,1.2);
+	webkit-transform:scale(1.2,1.2);	
+}
+#opciones{
+	top:42px;
+	left:0px;
+	display:none;
+	position:fixed;
+	width:100%;
+	background-color:#FFF;
+	z-index:10;
+	bottom:0px;
+	
+}
+#opList{
+	top:42px;
+	left:0px;
+	display:none;
+	width:100%;
+	z-index:11;
+	
+	
+	position:absolute;
+	overflow:visible;
+	list-style: url(img/arrow-13-16.png);
+	text-align:left;
+	padding-left:4%;	
+}
+
+#opList li{
+	font-weight:bold;
+	padding-top:10px;
+	padding-bottom:5px;
+}
+#subMenu input{
+	padding-left:8%;
+}
+</style>
+<body>
+<div id="opciones">	
+</div>
+<ul id="opList">
+    	<input type="button" value="Guardar y volver" onclick="menu(false)" />
+   	  <li>Espacios entre letras</li>
+        <form>
+        	<input type="checkbox" id="espLetrasI" checked="checked" value="false">Espacios con iconos<br />
+            <div class="subMenu">Numero de saltos de linea:<br />
+    		<input type="radio" name="espLetras" value="0">Ninguno<br />
+            <input type="radio" name="espLetras" checked="checked" value="1">1<br />
+            <input type="radio" name="espLetras" value="2">2<br />
+            <input type="radio" name="espLetras" value="3">3<br />
+            <input type="radio" name="espLetras" value="4">4<br />
+            <input type="radio" name="espLetras" value="5">5<br />
+          </div>
+        </form>
+        <hr width="98%" color="#CCC" align="left"> 
+        <li>Espacios</li>
+        <form>
+        	<input type="checkbox" id="espI" value="false" checked="checked">Caracter espacio con iconos<br />
+            <div class="subMenu">Numero de saltos de linea:<br />
+    		<input type="radio" name="espJump" value="0">Ninguno<br />
+            <input type="radio" name="espJump" value="1">1<br />
+            <input type="radio" name="espJump" value="2">2<br />
+            <input type="radio" name="espJump" value="3">3<br />
+            <input type="radio" name="espJump" value="4">4<br />
+            <input type="radio" name="espJump" value="5" checked="checked">5<br />
+          </div>
+        </form>
+        <hr width="98%" color="#CCC" align="left">
+    	<li><a href="whatsapp://send?text=%F0%9F%86%93WhatsApp%20Petadator%F0%9F%86%92%0AEntra%20y%20haz%20tus%20letras%20para%20WhatsApp%0A%E2%8F%A9http%3A%2F%2Fftvpe.ml%2Fprueba%2Fwhatsapp.html%E2%8F%AA" style="color:#003">Comparte esta web</a></li>
+        <hr width="98%" color="#CCC" align="left">
+        <li style="font-style:italic">Versión 1.0 Publicada el 
+          <!-- #BeginDate format:Sw1 -->27 Agosto, 2014<!-- #EndDate -->
+        </li>
+    </ul>
+<div id="todo">
+<div id="titulo"><img style="transform:translate(0,4px)" src="img/whatsapp-by-apk_hd.png" width="30px" height="30px" alt="WhatsAss" />WhatsAss Petadator 3.000</div>
+<div id="toolBox">
+    <noscript>Activa javascript para poder usar esta aplicación <br/></noscript>
+    <input type="text" id="texto" />
+    <input value="Crear" type="button" onclick="create()" />&nbsp;&nbsp;&nbsp;Fuente
+    <select name="fuentes" id="fuentes"></select><br/>
+    <input value="Texto" type="button" onclick="emoji('text')" />
+    <input value="Código" type="button" onclick="emoji('code')" />
+    <input value="Emoticonos" type="button" onclick="emoji('emo')" />
+    <input value="Opciones" type="button" onclick="menu(true)" /><br/>
+        <div id="emoSel">
+        </div>
+  </div>
+<br />
+<br />
+<div id="writer">
+<div onclick="document.location = 'whatsapp://send?text=Hola%20Jodio'" id='share'></div>
+</div>
+
+<!--&#9723;<br />  U+2B1C
+&#11035;<br />
+if(!localStorage.espLetrasI) localStorage.setItem("espLetrasI",true)
+		 else console.log("ok1");
+		if(!localStorage.espLetras) localStorage.setItem("espLetras",1)
+		 else console.log("ok2");
+		if(!localStorage.espI) localStorage.setItem("espI",true)
+		 else console.log("ok3");
+		if(!localStorage.espJump) localStorage.setItem("espJump",5)
+		 else console.log("ok4");
+
+-->
+<script src="fonts_and_icons2.js"></script>
+<script>
+//Cargando Ajustes
+	if(typeof(Storage) !== "undefined"){
+		//Por defecto
+		console.log("ok");
+		if(!localStorage.espLetrasI) localStorage.espLetrasI = true;
+		 else console.log("ok1");
+		if(!localStorage.espLetras) localStorage.espLetras = 1;
+		 else console.log("ok2");
+		if(!localStorage.espI) localStorage.espI = true;
+		 else console.log("ok3");
+		if(!localStorage.espJump) localStorage.espJump = 5;
+		 else console.log("ok4");
+		console.log(localStorage.espLetrasI+" "+localStorage.espLetras+" "+localStorage.espI+" "+localStorage.espJump);
+		console.log(typeof(localStorage.espLetrasI))
+		document.getElementById("espLetrasI").checked = (localStorage.espLetrasI=="true");
+		setRadio("espLetras", localStorage.espLetras);
+		document.getElementById("espI").checked = (localStorage.espI=="true");
+		setRadio("espJump", localStorage.espJump);
+	}else{
+		//Cookies??	
+	}
+
+function menu(abrir){
+	if(abrir){
+		document.getElementById("opciones").style.display = "block";
+		document.getElementById("titulo").style.position = "fixed";
+		document.getElementById("opList").style.display = "block";
+		document.getElementById("writer").style.overflow = "scroll";
+		document.getElementById("writer").style.maxHeight = "2px"; 
+	}else{
+		svAjustes();
+		document.getElementById("writer").style.maxHeight = "none";
+		document.getElementById("writer").style.overflow = "visible";
+		document.getElementById("titulo").style.position = "static"; 
+		document.getElementById("opciones").style.display = "none";
+		document.getElementById("opList").style.display = "none";
+	}
+}
+
+function svAjustes(){
+	if(typeof(Storage) !== "undefined"){
+		localStorage.setItem("espLetrasI",document.getElementById("espLetrasI").checked);
+		localStorage.setItem("espLetras",radioVal("espLetras"));
+		localStorage.setItem("espI",document.getElementById("espI").checked);
+		localStorage.setItem("espJump",radioVal("espJump"));
+		console.log(localStorage.espLetrasI+" "+localStorage.espLetras+" "+localStorage.espI+" "+localStorage.espJump);
+	}else{
+		alert("Su navegador no utiliza WebStorage, por lo que sus ajustes no se guardaran");	
+	}
+}
+
+var emoForm = 0;
+function emojiMenu(emoForm){
+	var emoBox = ""
+	emoBox = "<table border='0'>";
+	var cRow = 0;
+	for(var ix = 0; ix < emoList[emoForm].length; ix++){
+		if(cRow == 7){
+			emoBox += "</tr><tr>";
+			cRow = 0;
+		}
+		cRow++;
+		emoBox += "<td><img src='img/"+emoList[emoForm][ix]+".png' \
+width='25px' height='25px' class='emoBoton' onclick='emoSel(\""+emoList[emoForm][ix]+"\")'/></td>";
+	}
+	emoBox += "</table>";
+	document.getElementById("emoBox").innerHTML = emoBox;
+}
+
+var fEmo = true;	
+var fEmo0 = "2b1c";
+var fEmo1 = "2b1b";
+var emoOp = 3;
+function emoFEmo(noHueco){
+	if(noHueco){
+		document.getElementById("Emo1").style.border = "thin solid #0FF";
+		document.getElementById("Emo0").style.border = "none";
+		fEmo = true;	
+	}else{
+		document.getElementById("Emo0").style.border = "thin solid #0FF";
+		document.getElementById("Emo1").style.border = "none";
+		fEmo = false;
+	}
+}
+function emoSel(code){
+	if(fEmo){
+		document.getElementById("Emo1").src = "img/"+code+".png" 
+		fEmo1=code
+	}else{
+		document.getElementById("Emo0").src = "img/"+code+".png" 
+	 	fEmo0=code;
+	}
+}
+
+function emoji(sel){
+	var emoSel = document.getElementById("emoSel");
+	switch(sel){
+		case "text":
+			emoOp = 1;
+			emoSel.innerHTML = " \
+			Texto para espacio:<input id='f0' type='text'/><br /> \
+			Texto para relleno:<input id='f1' type='text'/><br /> \
+			Puedes copiar los emoticonos desde <a href='http://getemoji.com/'>http://getemoji.com/</a>";	
+			break;
+		case "code":
+			emoOp = 2;
+			emoSel.innerHTML = " \
+			Escriba el código del emoticono:  <br /> \
+			Código para espacio:<input id='f0' size='6' value='9723' type='text'/> \
+			&nbsp;&nbsp;&nbsp;Hex: <input type='checkbox' id='HexOrDec' /><br /> \
+			Código para relleno:<input id='f1' size='6' value='11035' type='text'/><br /> \
+			Puedes encontrar el código aquí: \
+			<a href='http://apps.timwhitlock.info/emoji/tables/unicode'>timwhitlock.info</a><br />\
+			Copia el campo unicode quitandole el U+ y pincha en hexadecimal";
+			break;
+		case "emo":
+			emoOp = 3;
+			emoSel.innerHTML = "Rellenos:<img id='Emo0' \ src='img/2b1c.png' \
+	width='20px' height='20px' onclick='emoFEmo(false)' class='emoBoton'/>  &nbsp;&nbsp;&nbsp;&nbsp; \
+	Huecos:<img id='Emo1' \ src='img/2b1b.png' \
+	width='20px' height='20px' onclick='emoFEmo(true)' class='emoBoton'/> \
+	<br /> \
+	<img src='img/1f601.png' \
+	width='35px' height='35px' onclick='emojiMenu(0)' class='emoBoton'/> \
+	<img src='img/1f431.png' \
+	width='35px' height='35px' onclick='emojiMenu(1)' class='emoBoton'/> \
+	<img src='img/1f514.png' \
+	width='35px' height='35px' onclick='emojiMenu(2)' class='emoBoton'/> \
+	<img src='img/1f691.png' \
+	width='35px' height='35px' onclick='emojiMenu(3)' class='emoBoton'/> \
+	<img src='img/1f523.png' \
+	width='35px' height='35px' onclick='emojiMenu(4)' class='emoBoton'/> \
+	<div id='emoBox'></div>";
+	emojiMenu(0);
+			break;
+		default:
+			emoOp = -1;
+			emoSel.innerHTML = "Error, la opción no existe";
+	}
+}
+
+emoji('emo');
+
+function pixel(pixel){
+	switch(emoOp){
+		case 1:
+		 	var pText = (pixel)? "f0" : "f1";
+			return document.getElementById(pText).value;
+			break;
+		case 2:
+			var pText = (pixel)? document.getElementById("f0").value 
+			: document.getElementById("f1").value;
+			if(document.getElementById("HexOrDec").checked)pText = parseInt(pText,16);
+			return "&#"+pText;
+			break;
+		case 3:
+			var pText = (pixel)? fEmo1 : fEmo0;
+			pText = parseInt(pText,16);
+			return "&#"+pText;
+			break;
+		default:
+	}
+}
+//qwertyuiopasdfghjklñzxcvbnm 1234567890.
+
+function radioVal(name){
+	var radios = document.getElementsByName(name);
+	for (var i = 0; i < radios.length; i++) {
+		if (radios.item(i).checked) {
+			return radios.item(i).value;
+		}
+	}
+	return -1;	
+}
+
+function setRadio(name, valor){
+	var radios = document.getElementsByName(name);
+	for (var i = 0; i < radios.length; i++) {
+		if (radios.item(i).value == valor) {
+			radios.item(i).checked = true;
+		}else{
+			radios.item(i).checked = false;	
+		}
+	}	
+}
+
+function create(){
+	var input = document.getElementById("texto").value.toLowerCase(); 
+	var inpF = document.getElementById("fuentes").value;
+	var espLtI = document.getElementById("espLetrasI").checked;
+	var espLt = radioVal("espLetras");
+	var espI = document.getElementById("espI").checked;
+	var espJ = radioVal("espJump");
+	console.log(espLtI+" "+espLt+" "+espI+" "+espJ);
+	var output = "";
+	var pix1 = pixel(true);
+	var pix0 = pixel(false);
+	
+	for(var l = 0; l < input.length; l++){
+		try {
+			if(input.charAt(l)!=" "){
+				for(var i = 0; i < fn[inpF].x; i++){
+					for(var j = 0; j < fn[inpF].y; j++){
+						if(fn[inpF].char[input.charAt(l)][i][j]==0){
+							//output += "&#9723;";
+							output += pix1;
+						}else{
+							//output += "&#11035;";
+							output += pix0;
+						}
+					}
+					output += "\n";
+				}
+			}else{
+				if(espI){
+					for(var i = 0; i < espJ; i++){
+						for(var j = 0; j < fn[inpF].y; j++){
+							output += pix1;
+						}
+						output += "\n";
+					}
+				}else{
+					for(var i = 0; i < espJ; i++){
+						output += "\n";	
+					}
+				}
+			}
+		}catch(err) {
+    		alert("Caracter " + input.charAt(l) +" no indexado");
+			//output += "ERROR<br/>";
+			console.warn("¡ERROR caracter "+input.charAt(l)+" no soportado\n"+err);
+		}
+		if(l+1 != input.length){
+		if(espLtI){
+			for(var i = 0; i < espLt; i++){
+				for(var j = 0; j < fn[inpF].y; j++){
+					output += pix1;
+				}
+				output += "\n";
+			}
+		}else{
+			for(var i = 0; i < espLt; i++){
+				output += "\n";
+			}
+		}
+		}
+		//output += "\n";
+	}
+	document.getElementById("writer").innerHTML = "<div onclick='document.location = \"whatsapp://send?text="+encodeURIComponent(uniDecode(output))+"\"' id='share'></div>"+output.replace(/\n/g, '<br />');;
+	var selection = window.getSelection();
+	var range = document.createRange();
+	range.selectNodeContents(document.getElementById("writer"));
+	selection.removeAllRanges();
+	selection.addRange(range);
+}
+
+function uniDecode(str){
+	var text, p=document.createElement('p');
+    p.innerHTML=str;
+    text= p.innerText || p.textContent;
+    p.innerHTML='';
+    return text;	
+}
+
+</script>
+</div>
+</body>
+</html>

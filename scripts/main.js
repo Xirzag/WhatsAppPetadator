@@ -1,5 +1,5 @@
 //Cargando Ajustes
-	var cssSheet = "main.css";
+	var cssSheet = "style/main.css";
 	if(typeof(Storage) !== "undefined"){
 		//Por defecto
 		console.log("ok");

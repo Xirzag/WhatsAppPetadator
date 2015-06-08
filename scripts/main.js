@@ -1,5 +1,4 @@
 //Cargando Ajustes
-	document.body.style.display = "none";
 	var cssSheet = "style/main.css";
 	if(typeof(Storage) !== "undefined"){
 		//Por defecto

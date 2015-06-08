@@ -1,4 +1,5 @@
 //Cargando Ajustes
+	document.body.style.display = "none";
 	var cssSheet = "style/main.css";
 	if(typeof(Storage) !== "undefined"){
 		//Por defecto
@@ -42,6 +43,7 @@ function setStyleSheet(file){
 }
 
 setStyleSheet(cssSheet);
+document.body.style.display = "block";
 
 function menu(abrir){
 	if(abrir){

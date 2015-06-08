@@ -1,0 +1,242 @@
+input[type=button]{
+	border: 0px;
+	border-bottom: thin solid transparent;
+	background-color: transparent;
+	color:  #a5cfcb;
+	cursor:pointer;
+	transition: all 0.5s;
+	margin-top: 4px;	
+}
+
+.whiteBack[type=button] {
+	font-weight: bold;
+	color:  #457f7b;
+}
+
+input[type=text]{
+	background: #E7E7E7;
+	border: thin solid #888;
+	color:  #555;
+	border-radius: 4px;
+	cursor:text;
+}
+
+input[type=text]:hover, input[type=text]:focus{
+	transition: all 0.5s;
+	background: white;
+	border-bottom: thin solid #FFF;
+	border: thin solid #666;
+	color:  #333;
+}
+
+input[type=button]:hover,
+input[type=button]:target{
+	border-bottom: thin solid #FFF;
+	color:  #FFF;
+}
+
+.whiteBack[type=button]:hover {
+	color:  #255f5b;
+	border-bottom: thin solid #255f5b;
+}
+#fuentes{
+	transition: all 0.5s;
+	background: #E7E7E7;
+	border: 0px;
+	color: #255f5b;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+   	appearance: none;
+   	background-image: url(../img/1f53d.png);
+   	background-repeat: no-repeat;
+   	background-color: #F7F7F7;
+   	background-position: right 5px center;
+   	background-size: 1em 1em;
+}
+#fuentes:hover{
+	background-color: white;
+}
+#fuentes:focus{
+	background: white;
+}
+#fuentes::-ms-expand {
+	display: none;
+}
+body{
+	transition:all 0.3s ease-in-out;
+	webkit-transition:all 0.3s ease-in-out;	
+	background-color: #eeeade;
+	text-align:center;
+	font-family:Verdana, Geneva, sans-serif;
+}
+#todo{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+}
+#titulo{
+	line-stacking-strategy:inline-line-height;
+	overflow: hidden;
+    white-space: nowrap;
+	resize:none;
+	padding-top:0px;
+	padding-bottom:6px;
+	background-color: #002c24;/*#054c44;*/
+	color: #FFF;
+	top:0px;
+	left:0px;
+	width:100%;
+	font-size:20px;
+	/*box-shadow: inset 0 0 20px rgba(0,0,0,0.8);	
+	webkit-box-shadow: inset 0 0 20px rgba(0,0,0,0.8);*/
+	z-index:15;	
+}
+#writer{
+	position:relative;
+	padding:20px;
+	margin-bottom:20px;
+	background-color: #FFF;
+	box-shadow:0.5px 0.5px 3px rgba(0,0,0,0.5);
+	webkit-box-shadow:0.5px 0.5px 3px rgba(0,0,0,0.5);
+	left:25%;
+	width:50%;
+	min-height:200px;
+}
+#toolBox{
+	padding-top:15px;
+	padding-bottom:20px;
+	background-color: #075e55;
+	color:#85afab;
+	width:100%;
+	font-size:14px;	
+}
+#emoSel{
+	background:#555555;
+	color:white;
+	width:230px;
+	margin: 0 auto;
+	padding-top: 5px;
+	margin-top: 5px;
+}
+.emoBoton{
+	transition:all 0.3s ease-in-out;
+	webkit-transition:all 0.3s ease-in-out;
+	cursor:pointer;		
+}
+.emoBoton:hover{
+	transform:scale(1.2,1.2);
+	webkit-transform:scale(1.2,1.2);	
+}
+#emoBox{
+	transition:all 0.3s ease-in-out;
+	webkit-transition:all 0.3s ease-in-out;	
+	overflow:scroll;
+	margin: 0 auto;
+    background-color: #EEEADE;
+	position:relative;
+	text-align:center;
+	height:120px;
+	max-height:120px;
+	width:230px;	
+}
+#shareButtons{
+	float:left;
+	width: 0;
+}
+.share{
+	opacity:0.8;
+	position: relative;
+	display:block;
+	left: 0px;
+	width: 35px;
+	height: 35px;
+	/*background-image: url(http://www.icon2s.com/img256/256x256-black-white-android-share.png);*/
+	background-image: url(../img/share.png);
+	background-size:35px 35px;
+	background-repeat: no-repeat;
+	background-position: left center;
+	transition:all 0.3s ease-in-out;
+	webkit-transition:all 0.3s ease-in-out;
+	cursor:pointer;
+	margin-bottom: 15px;		
+}
+.share:hover{
+	opacity:1;
+	transform:scale(1.2,1.2);
+	webkit-transform:scale(1.2,1.2);	
+}
+.whatsapp::after,
+.telegram::after,
+.twitter::after,
+.twitterWeb::after{
+	width:30px;
+	height:30px;
+	position: relative;
+	background-size:25px 25px;
+	transform: translate(25px, 20px);
+	background-repeat: no-repeat;
+	background-position: left center;
+	content:"icon";
+	color: transparent;
+	display: block;
+}
+.whatsapp::after{
+	background-image:  url(../img/whatsapp-by-apk_hd.png);
+}
+.telegram::after{
+	background-image:  url(../img/telegram.png);
+}
+.twitter::after{
+	background-image:  url(../img/twitter.png);
+}
+.twitterWeb::after{
+	background-image:  url(../img/twitterWeb.png);
+}
+#opciones{
+	transition:all 0.3s ease-in-out;
+	webkit-transition:all 0.3s ease-in-out;
+	opacity:0;	
+	top:42px;
+	left:0px;
+	display:none;
+	position:fixed;
+	width:100%;
+	background-color:#FFF;
+	z-index:10;
+	bottom:0px;
+	
+}
+#opList{
+	transition:all 1s ease-in-out;
+	webkit-transition:all 1s ease-in-out;	
+	top:42px;
+	left:0px;
+	display:none;
+	width:96%;
+	z-index:11;
+	
+	
+	position:absolute;
+	overflow:visible;
+	list-style: url(../img/arrow-13-16.png);
+	text-align:left;
+	padding-left:4%;	
+}
+
+#opList li{
+	font-weight:bold;
+	padding-top:10px;
+	padding-bottom:5px;
+}
+#subMenu input{
+	padding-left:8%;
+}
+#page{
+	transition:all 1s ease-in-out;
+	webkit-transition:all 1s ease-in-out;	
+}
+#space{
+	position:absolute;
+	display:marker;	
+}

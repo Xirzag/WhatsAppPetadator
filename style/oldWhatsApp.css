@@ -1,0 +1,221 @@
+input[type=button]{
+	background-color: #F7F7F7;
+	border: thin solid #888;
+	color:  #555;
+	border-radius: 4px;
+	box-shadow: inset -1px -2px 2px 2px rgba(0,0,0,0.2);
+	webkit-box-shadow: inset -1px -2px 2px 2px rgba(0,0,0,0.2);
+	cursor:pointer;	
+}
+#fuentes{
+	border: thin solid #888;
+	color:  #555;
+	border-radius: 4px;
+	box-shadow: inset -1px -2px 2px 2px rgba(0,0,0,0.2);
+	webkit-box-shadow: inset -1px -2px 2px 2px rgba(0,0,0,0.2);
+	-webkit-appearance: none;
+	-moz-appearance: none;
+   	appearance: none;
+   	background: url(../img/1f53d.png) no-repeat #F7F7F7;
+   	background-position: right 5px center;
+   	background-size: 1em 1em;
+}
+#fuentes::-ms-expand {
+	display: none;
+}
+input[type=text]{
+	background-color: #FFF;
+	border: thin solid #888;
+	color:  #555;
+	border-radius: 4px;
+	box-shadow: inset -1px -0px 3px 3px rgba(0,0,0,0.15);
+	webkit-box-shadow: inset -1px -0px 3px 3px rgba(0,0,0,0.15);
+	cursor:text;
+}
+
+input[type=text]:hover, input[type=text]:focus{
+	background-color: #FFF;
+	border: thin solid #666;
+	color:  #333;
+	box-shadow: inset -1px -0px 3px 3px rgba(0,0,0,0.1);
+	webkit-box-shadow: inset -1px -0px 3px 3px rgba(0,0,0,0.1);
+}
+
+input[type=button]:hover, #fuentes:hover{
+	background-color: #FFF;
+	border: thin solid #666;
+	color:  #333;
+}
+body{
+	transition:all 0.3s ease-in-out;
+	webkit-transition:all 0.3s ease-in-out;	
+	background-color: #FFC;
+	text-align:center;
+	font-family:Verdana, Geneva, sans-serif;
+}
+#todo{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+}
+#titulo{
+	line-stacking-strategy:inline-line-height;
+	overflow: hidden;
+    white-space: nowrap;
+	resize:none;
+	padding-top:0px;
+	padding-bottom:6px;
+	background-color: #333;
+	color: #FFF;
+	top:0px;
+	left:0px;
+	width:100%;
+	font-size:20px;
+	box-shadow: inset 0 0 20px rgba(0,0,0,0.8);	
+	webkit-box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+	z-index:15;	
+}
+#writer{
+	position:relative;
+	padding:20px;
+	margin-bottom:20px;
+	background-color: #FFF;
+	box-shadow:4px 4px 3px rgba(0,0,0,0.5);
+	webkit-box-shadow:4px 4px 3px rgba(0,0,0,0.5);
+	left:25%;
+	width:50%;
+	min-height:200px;
+}
+#toolBox{
+	padding-top:15px;
+	padding-bottom:20px;
+	background-color: #EEE;
+	width:100%;
+	font-size:14px;
+	box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+	webkit-box-shadow: inset 0 0 20px rgba(0,0,0,0.3);		
+}
+.emoBoton{
+	transition:all 0.3s ease-in-out;
+	webkit-transition:all 0.3s ease-in-out;
+	cursor:pointer;		
+}
+.emoBoton:hover{
+	transform:scale(1.2,1.2);
+	webkit-transform:scale(1.2,1.2);	
+}
+#emoBox{
+	transition:all 0.3s ease-in-out;
+	webkit-transition:all 0.3s ease-in-out;	
+	overflow:scroll;
+	margin: 0 auto;
+    
+	box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+	webkit-box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+	position:relative;
+	text-align:center;
+	height:120px;
+	max-height:120px;
+	width:230px;	
+}
+#shareButtons{
+	float:left;
+	width: 0;
+}
+.share{
+	opacity:0.5;
+	position: relative;
+	display:block;
+	left: 0px;
+	width: 35px;
+	height: 35px;
+	/*background-image: url(http://www.icon2s.com/img256/256x256-black-white-android-share.png);*/
+	background-image: url(../img/share.png);
+	background-size:35px 35px;
+	background-repeat: no-repeat;
+	background-position: left center;
+	transition:all 0.3s ease-in-out;
+	webkit-transition:all 0.3s ease-in-out;
+	cursor:pointer;
+	margin-bottom: 15px;		
+}
+.share:hover{
+	opacity:1;
+	transform:scale(1.2,1.2);
+	webkit-transform:scale(1.2,1.2);	
+}
+.whatsapp::after,
+.telegram::after,
+.twitter::after,
+.twitterWeb::after{
+	width:30px;
+	height:30px;
+	position: relative;
+	background-size:25px 25px;
+	transform: translate(25px, 20px);
+	background-repeat: no-repeat;
+	background-position: left center;
+	content:"icon";
+	color: transparent;
+	display: block;
+}
+.whatsapp::after{
+	background-image:  url(../img/whatsapp-by-apk_hd.png);
+}
+.telegram::after{
+	background-image:  url(../img/telegram.png);
+}
+.twitter::after{
+	background-image:  url(../img/twitter.png);
+}
+.twitterWeb::after{
+	background-image:  url(../img/twitterWeb.png);
+}
+#opciones{
+	transition:all 0.3s ease-in-out;
+	webkit-transition:all 0.3s ease-in-out;
+	opacity:0;	
+	top:42px;
+	left:0px;
+	display:none;
+	position:fixed;
+	width:100%;
+	background-color:#FFF;
+	z-index:10;
+	bottom:0px;
+	
+}
+#opList{
+	transition:all 1s ease-in-out;
+	webkit-transition:all 1s ease-in-out;	
+	top:42px;
+	left:0px;
+	display:none;
+	width:96%;
+	z-index:11;
+	
+	
+	position:absolute;
+	overflow:visible;
+	list-style: url(../img/arrow-13-16.png);
+	text-align:left;
+	padding-left:4%;	
+}
+
+#opList li{
+	font-weight:bold;
+	padding-top:10px;
+	padding-bottom:5px;
+}
+#subMenu input{
+	padding-left:8%;
+}
+#page{
+	transition:all 1s ease-in-out;
+	webkit-transition:all 1s ease-in-out;	
+}
+#space{
+	position:absolute;
+	display:marker;	
+}

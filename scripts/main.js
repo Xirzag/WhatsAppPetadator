@@ -141,7 +141,7 @@ function emoji(sel){
 			emoSel.innerHTML = " \
 			Texto para espacio:<input id='f0' type='text'/><br /> \
 			Texto para relleno:<input id='f1' type='text'/><br /> \
-			Puedes copiar los emoticonos desde <a href='http://getemoji.com/'>http://getemoji.com/</a>";	
+			Puedes copiar los emoticonos desde <a href='http://getemoji.com/' target='_blank'>http://getemoji.com/</a>";	
 			break;
 		case "code":
 			emoOp = 2;
@@ -151,7 +151,7 @@ function emoji(sel){
 			&nbsp;&nbsp;&nbsp;Hex: <input type='checkbox' id='HexOrDec' /><br /> \
 			Código para relleno:<input id='f1' size='6' value='11035' type='text'/><br /> \
 			Puedes encontrar el código aquí: \
-			<a href='http://apps.timwhitlock.info/emoji/tables/unicode'>timwhitlock.info</a><br />\
+			<a href='http://apps.timwhitlock.info/emoji/tables/unicode' target='_blank'>timwhitlock.info</a><br />\
 			Copia el campo unicode quitandole el U+ y pincha en hexadecimal";
 			break;
 		case "emo":

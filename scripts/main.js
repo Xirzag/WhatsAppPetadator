@@ -171,6 +171,8 @@ function emoji(sel){
 	width='35px' height='35px' onclick='emojiMenu(3)' class='emoBoton'/> \
 	<img src='img/1f523.png' \
 	width='35px' height='35px' onclick='emojiMenu(4)' class='emoBoton'/> \
+	<img src='img/1f195.png' \
+	width='35px' height='35px' onclick='emojiMenu(5)' class='emoBoton'/> \
 	<div id='emoBox'></div>";
 	emojiMenu(0);
 			break;

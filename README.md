@@ -4,10 +4,10 @@ WhatsAppPetadator
 English
 -------
 
-Send words maked with emoticons with Whatsapp.
-Just with your phone to [WhatsAppPetadator](http://xirzag.github.io/WhatsAppPetadator/), write what you want, choose your icons and touch the first share button.
+Send words made with emoticons through Whatsapp.
+Take your phone and go to [WhatsAppPetadator](http://xirzag.github.io/WhatsAppPetadator/), write what you want, choose icons and touch the share button.
 
-Also you have two other tabs, one for adding text and another to write the icon code. 
+Also there are two other tabs, one for adding text and another to write the icon code. 
 
 Español
 -------
